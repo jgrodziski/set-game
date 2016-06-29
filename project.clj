@@ -14,6 +14,7 @@
                  [compojure "1.5.1"]
                  [hiccup "1.0.5"]
                  [yogthos/config "0.8"]
+                 [org.clojure/math.combinatorics "0.1.3"]
                  [org.clojure/clojurescript "1.9.92"
                   :scope "provided"]
                  [secretary "1.2.3"]
