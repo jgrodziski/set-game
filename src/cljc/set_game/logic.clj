@@ -1,4 +1,4 @@
-(ns set-game.core.logic
+(ns set-game.logic
   (:require [clojure.math.combinatorics :as combo]))
 
 (def shapes  #{:oval :diamond :squiggle})
@@ -32,6 +32,3 @@
 
 (defn SETs [deck]
   (filter set-of-cards? (combo/combinations deck 3)))
-
-
-

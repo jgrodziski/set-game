@@ -32,11 +32,14 @@ For example, the following are SETs:
 * A player must call SET before picking up the cards. 
 * There are no turns, the first player to call SET gets control of the board. 
 * After he/she has called SET, no other player can pick up cards until that player has finished. 
-* If all players agree that there is not a SET in the 12 cards, 3 more cards are laid face up on the table. The 3 cards are not replaced when the next SET is found, reducing the number back to 12. _Note_: There are ~ 33:1 odds that a SET is present in 12 cards, and ~ 2500:1 odds when 15 cards are on the table.    
+* If all players agree that there is not a SET in the 12 cards, 3 more cards are laid face up on the table. The 3 cards are not replaced when the next SET is found, reducing the number back to 12. _Note_: There are ~ 33:1 odds that a SET is present in 12 cards, and ~ 2500:1 odds when 15 cards are on the table.
+    
+**Stunning Anecdote about the SET game** : 
 
+[https://www.quantamagazine.org/20160531-set-proof-stuns-mathematicians](https://www.quantamagazine.org/20160531-set-proof-stuns-mathematicians)
+> How big, one might wonder, is the largest collection of cards that contains no set? the answer is 20, proved in 1971 by the Italian mathematician Giuseppe Pellegrino. 
 
-> Copyright © 1998, 1991 Cannei, LLC. All rights reserved. SET® and all designated logos and slogans are registered trademarks of Cannei, LLC.
-
+Recent math papers published in may 2016 defines an upper bound on how big a set can be with a variable number _n_ of attributes, leading to big advances in "polynomial method" field of mathematics. 
 
 # The SET Game Kata
 
@@ -64,7 +67,7 @@ Here is a solution for the Kata, using some brute force forming all the combinat
 NB: `.cljc` suffix and source directory means the Clojure code in the file can either be run on the JVM or in a browser, hence is Clojure/ClojureScript compatible, `.cljs` means ClojureScript only and `.clj` Clojure only.
 
 ```
-(ns set-game.core.logic
+(ns set-game.logic
   (:require [clojure.math.combinatorics :as combo]))
 
 (def shapes  #{:oval :diamond :squiggle})
@@ -98,9 +101,11 @@ NB: `.cljc` suffix and source directory means the Clojure code in the file can e
 
 (defn SETs [deck]
   (filter set-of-cards? (combo/combinations deck 3)))
+
 ```
 
-
+**Beware the SET game is copyrighted! the content is here for educational purpose only.** 
+>Copyright © 1998, 1991 Cannei, LLC. All rights reserved. SET® and all designated logos and slogans are registered trademarks of Cannei, LLC.
 
 
 
