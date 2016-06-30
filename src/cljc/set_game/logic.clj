@@ -15,20 +15,17 @@
 
 (def deck (take 12 cards))
 
-(defn all-identical? [p1 p2 p3]
-  (= p1 p2 p3))
-
-(defn all-different? [p1 p2 p3]
-  (= (count (set [p1 p2 p3])) 3))
+(defn identical-or-distinct? [p1 p2 p3]
+  (not= (count (set [p1 p2 p3])) 2))
 
 (defn set-of-cards? [[[c1-shape c1-color c1-number c1-shading]
                       [c2-shape c2-color c2-number c2-shading]
                       [c3-shape c3-color c3-number c3-shading]]]
   (and
-    (or (all-different? c1-shape c2-shape c3-shape) (all-identical? c1-shape c2-shape c3-shape))
-    (or (all-different? c1-color c2-color c3-color) (all-identical? c1-color c2-color c3-color))
-    (or (all-different? c1-number c2-number c3-number) (all-identical? c1-number c2-number c3-number))
-    (or (all-different? c1-shading c2-shading c3-shading) (all-identical? c1-shading c2-shading c3-shading))))
+    (identical-or-distinct? c1-shape   c2-shape   c3-shape  )
+    (identical-or-distinct? c1-color   c2-color   c3-color  )
+    (identical-or-distinct? c1-number  c2-number  c3-number )
+    (identical-or-distinct? c1-shading c2-shading c3-shading)))
 
 (defn SETs [deck]
   (filter set-of-cards? (combo/combinations deck 3)))

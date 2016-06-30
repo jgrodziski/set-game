@@ -3,18 +3,25 @@ The goal of the SET game is to identify a SET of 3 cards from 12 cards choosed r
 ![Set Cards Examples](set-cards.png)
 
 A SET consists of 3 cards in which each of the card’s features, looked at one‐by‐one, are the same on each card, or, are different on each card. All of the features must separately satisfy this rule. In other words: shape must be either the same on all 3 cards, or different on each of the 3 cards; color must be either the same on all 3 cards, or different on each of the 3, etc. See EXAMPLES below.
+So all the cards are:
+![All cards](all-cards.png) 
 
 ## A quick check ‐ Is it a SET?
 If 2 cards are the same and 1 card is different in any feature, then it is not a SET. For example, if 2 are red and 1 is purple then it is not a SET. A SET must be either all the same OR all different in each individual feature.
+![Set or not](set-or-no-set.png)
+
 
 ## Examples
 For example, the following are SETs:
 
 * All three cards have the **same shape**, the **same color**, the **same number** of symbols and they all have **different shading**.
+
   ![Set example 1](set1.png)
 * All three cards have **different shapes**, **different colors**, and **different numbers** of symbols and they all have the **same shading**.
+
   ![Set example 2](set2.png)
 * All three cards have **different shapes**, **different colors**, **different numbers** of symbols and **different shadings**.
+
   ![Set example 3](set3.png)
 
 ## The play
@@ -42,16 +49,6 @@ For example, the following are SETs:
 Recent math papers published in may 2016 defines an upper bound on how big a set can be with a variable number _n_ of attributes, leading to big advances in "polynomial method" field of mathematics. 
 
 # The SET Game Kata
-
-## Project setup
-Have at least a JVM and Leiningen installed, then run:
-`lein new reagent set-game +devcards`
-then 
-`lein figwheel`
-then 
-`lein figwheel devcards`
-
-or simply run a repl within the Cursive IDE for instance.
 
 ## Instructions for the SET game domain logic
 
@@ -87,26 +84,58 @@ NB: `.cljc` suffix and source directory means the Clojure code in the file can e
 
 (def deck (take 12 cards))
 
-(defn all-identical? [p1 p2 p3]
-  (= p1 p2 p3))
-
-(defn all-different? [p1 p2 p3]
-  (= (count (set [p1 p2 p3])) 3))
+(defn identical-or-distinct? [p1 p2 p3]
+  (not= (count (set [p1 p2 p3])) 2))
 
 (defn set-of-cards? [[[c1-shape c1-color c1-number c1-shading]
                       [c2-shape c2-color c2-number c2-shading]
                       [c3-shape c3-color c3-number c3-shading]]]
   (and
-    (or (all-different? c1-shape c2-shape c3-shape) (all-identical? c1-shape c2-shape c3-shape))
-    (or (all-different? c1-color c2-color c3-color) (all-identical? c1-color c2-color c3-color))
-    (or (all-different? c1-number c2-number c3-number) (all-identical? c1-number c2-number c3-number))
-    (or (all-different? c1-shading c2-shading c3-shading) (all-identical? c1-shading c2-shading c3-shading))))
+    (identical-or-distinct? c1-shape   c2-shape   c3-shape  )
+    (identical-or-distinct? c1-color   c2-color   c3-color  )
+    (identical-or-distinct? c1-number  c2-number  c3-number )
+    (identical-or-distinct? c1-shading c2-shading c3-shading)))
 
 (defn SETs [deck]
   (filter set-of-cards? (combo/combinations deck 3)))
-
 ```
 
+For instance, given the following deck (random) :
+
+```clojure
+deck
+=>
+([:squiggle :green :3 :stripped]
+ [:oval :red :2 :stripped]
+ [:diamond :green :1 :solid]
+ [:oval :purple :3 :stripped]
+ [:squiggle :green :2 :solid]
+ [:squiggle :green :3 :solid]
+ [:oval :green :1 :solid]
+ [:diamond :red :3 :outline]
+ [:oval :purple :1 :stripped]
+ [:squiggle :purple :1 :stripped]
+ [:oval :red :1 :stripped]
+ [:diamond :red :1 :stripped])
+```
+ 
+the result of applying the SETs function to the deck data structure gives back the two solution:
+
+```clojure
+(SETs deck)
+=>
+(([:oval :purple :3 :stripped] [:squiggle :green :3 :solid] [:diamond :red :3 :outline])
+ ([:squiggle :green :2 :solid] [:diamond :red :3 :outline] [:oval :purple :1 :stripped]))
+```
+
+TODO: 
+* implement the game steps to empty the cards 
+
+## A solution using Clojure.spec
+
+An amazing solution made by [Christophe Grand](https://twitter.com/cgrand) using [clojure.spec](http://clojure.org/about/spec): https://gist.github.com/cgrand/4985a7ef80c8c85291213437d06d9169
+
+ 
 **Beware the SET game is copyrighted! the content is here for educational purpose only.** 
 >Copyright © 1998, 1991 Cannei, LLC. All rights reserved. SET® and all designated logos and slogans are registered trademarks of Cannei, LLC.
 
