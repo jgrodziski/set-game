@@ -63,7 +63,9 @@ or simply run a repl within the Cursive IDE for instance.
 
 ## A possible solution
 
-Here is a solution for the Kata, using some brute force forming all the combinations C3/20 (hence 220) and checking if each one of those is a set or not. The code is in `src/cljc/set_game/logic.cljc` 
+Here is a solution for the Kata, using some brute force forming all the combinations C3/20 (hence 220) and checking if each one of those is a set or not. 
+
+The code is in `[src/cljc/set_game/logic.cljc](https://github.com/jgrodziski/set-game/blob/master/src/cljc/set_game/logic.clj)`. 
 
 NB: `.cljc` suffix and source directory means the Clojure code in the file can either be run on the JVM or in a browser, hence is Clojure/ClojureScript compatible, `.cljs` means ClojureScript only and `.clj` Clojure only.
 
