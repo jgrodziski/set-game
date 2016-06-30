@@ -103,7 +103,7 @@ NB: `.cljc` suffix and source directory means the Clojure code in the file can e
 For instance, given the following deck (random) :
 
 ```clojure
-deck
+(deck)
 =>
 ([:squiggle :green :3 :stripped]
  [:oval :red :2 :stripped]
@@ -122,7 +122,7 @@ deck
 the result of applying the SETs function to the deck data structure gives back the two solution:
 
 ```clojure
-(SETs deck)
+(SETs (deck))
 =>
 (([:oval :purple :3 :stripped] [:squiggle :green :3 :solid] [:diamond :red :3 :outline])
  ([:squiggle :green :2 :solid] [:diamond :red :3 :outline] [:oval :purple :1 :stripped]))

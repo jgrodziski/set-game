@@ -1,5 +1,5 @@
 (ns set-game.logic
-  (:require [clojure.math.combinatorics :as combo]))
+  (:require [clojure.math.combinatorics :refer [combinations]]))
 
 (def shapes  #{:oval :diamond :squiggle})
 (def colors  #{:red :purple :green})
@@ -13,7 +13,8 @@
                shuffle
                set))
 
-(def deck (take 12 cards))
+(defn deck []
+  (take 12 cards))
 
 (defn identical-or-distinct? [p1 p2 p3]
   (not= (count (set [p1 p2 p3])) 2))
@@ -28,4 +29,4 @@
     (identical-or-distinct? c1-shading c2-shading c3-shading)))
 
 (defn SETs [deck]
-  (filter set-of-cards? (combo/combinations deck 3)))
+  (filter set-of-cards? (combinations deck 3)))
