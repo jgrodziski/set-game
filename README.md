@@ -1,14 +1,14 @@
 # SET Game
 The goal of the SET game is to identify a SET of 3 cards from 12 cards choosed randomly from the 81 cards and placed face up on the table. Each card has four features, which can vary as follows:
-![Set Cards Examples](set-cards.png)
+![Set Cards Examples](resources/public/imgs/set-cards.png)
 
 A SET consists of 3 cards in which each of the card’s features, looked at one‐by‐one, are the same on each card, or, are different on each card. All of the features must separately satisfy this rule. In other words: shape must be either the same on all 3 cards, or different on each of the 3 cards; color must be either the same on all 3 cards, or different on each of the 3, etc. See EXAMPLES below.
 So all the cards are:
-![All cards](all-cards.png) 
+![All cards](resources/public/imgs/all-cards.png) 
 
 ## A quick check ‐ Is it a SET?
 If 2 cards are the same and 1 card is different in any feature, then it is not a SET. For example, if 2 are red and 1 is purple then it is not a SET. A SET must be either all the same OR all different in each individual feature.
-![Set or not](set-or-no-set.png)
+![Set or not](resources/public/imgs/set-or-no-set.png)
 
 
 ## Examples
@@ -16,13 +16,13 @@ For example, the following are SETs:
 
 * All three cards have the **same shape**, the **same color**, the **same number** of symbols and they all have **different shading**.
 
-  ![Set example 1](set1.png)
+  ![Set example 1](resources/public/imgs/set1.png)
 * All three cards have **different shapes**, **different colors**, and **different numbers** of symbols and they all have the **same shading**.
 
-  ![Set example 2](set2.png)
+  ![Set example 2](resources/public/imgs/set2.png)
 * All three cards have **different shapes**, **different colors**, **different numbers** of symbols and **different shadings**.
 
-  ![Set example 3](set3.png)
+  ![Set example 3](resources/public/imgs/set3.png)
 
 ## The play
 
@@ -129,6 +129,7 @@ the result of applying the SETs function to the deck data structure gives back t
 ```
 
 TODO: 
+
 * implement the game steps to empty the cards 
 
 ## A solution using Clojure.spec
