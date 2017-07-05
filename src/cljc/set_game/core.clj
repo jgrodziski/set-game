@@ -2,8 +2,8 @@
   (:require [set-game.logic :as logic]))
 
 (defn initial-game-state
-  [players, deck]
-  {:players (map (fn [player] {:name player, :score 0}) players)
+  [deck, players]
+  {:players (reduce (fn [acc player] (assoc acc player 0)) {} players)
    :deck deck
    :board []
    }  )
@@ -17,7 +17,10 @@
    :board (into (:board state) (take number-of-cards (:deck state)))
   } )
 
-(defn start-game! [players] (draw-cards (initial-game-state players (shuffle logic/cards)) 12))
+(defn start-game! [players]
+  (-> (shuffle logic/cards)
+   (initial-game-state players) 
+   (draw-cards 12)))
 
 
 
