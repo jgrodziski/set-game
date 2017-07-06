@@ -16,7 +16,7 @@ Install the dependencies:
 In a terminal run  `./dev.sh`, in another run `react-native run-ios`.
 
 
-![Image of app](paris-clojure-meetup-mobile-app-set-game.gif)
+![](paris-clojure-meetup-mobile-app-set-game.gif)
 
 
 
