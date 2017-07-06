@@ -6,7 +6,7 @@
   {:players (map (fn [player] {:name player, :score 0}) players)
    :deck deck;sequence
    :board #{};this is a set, because order has no meaning
-   }  )
+   })
 
 
 (defn draw-cards-from-deck
@@ -16,8 +16,10 @@
         (assoc :board (into (:board state) board))
         (assoc :deck deck))))
 
-
-(defn start-game! [players] (draw-cards (initial-game-state players (shuffle logic/cards)) 12))
+(defn start-game! [players]
+  (-> (shuffle logic/cards)
+   (initial-game-state players) 
+   (draw-cards 12)))
 
 (defn score [state player set-of-cards]
   state)
@@ -30,8 +32,5 @@
       (-> state
           (remove-set-of-cards-from-board set-of-cards)
           (draw-cards-from-deck 3)
-          (score player set-of-cards))
-      )))
-      ))
-  )
+          (score player set-of-cards)))))
 
