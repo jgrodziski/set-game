@@ -1,14 +1,22 @@
 # set-game
 
-A Clojure library designed to ... well, that part is up to you.
+Developed at the Paris Clojure Meetup
 
-## Usage
 
-FIXME
+# How to run
+Make sure you have installed react-native and re-natal:
 
-## License
+- `npm install -g react-native-cli`
+- `npm install -g re-natal`
 
-Copyright © 2017 FIXME
+Install the dependencies:
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+- `re-natal deps`
+
+In a terminal run  `./dev.sh`, in another run `react-native run-ios`.
+
+
+![Image of app](paris-clojure-meetup-mobile-app-set-game.gif)
+
+
+

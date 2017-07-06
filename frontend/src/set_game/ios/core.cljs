@@ -121,12 +121,7 @@
 
 
 (defn card-row [entry]
-  (let [_ (prn "entry" entry)
-
-        {:keys [item index]} entry
-        _ (prn "item" item ",index" index)
-
-        ]
+  (let [{:keys [item index]} entry]
     [card-view (map keyword item)]))
 
 
